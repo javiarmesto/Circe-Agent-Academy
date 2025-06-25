@@ -1,0 +1,1490 @@
+                            <div class="shortcut-item">
+                                <span class="shortcut-action">Chat Inline</span>
+                                <span class="shortcut-keys">Ctrl + I</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-action">Quick Chat</span>
+                                <span class="shortcut-keys">Ctrl + Shift + Alt + L</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-action">Siguiente bloque de código</span>
+                                <span class="shortcut-keys">Ctrl + Alt + PageDown</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-action">Bloque anterior</span>
+                                <span class="shortcut-keys">Ctrl + Alt + PageUp</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-action">Ver todas las sugerencias</span>
+                                <span class="shortcut-keys">Ctrl + Enter</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tips-grid">
+                        <div class="tip-card" data-difficulty="beginner">
+                            <div class="tip-header">
+                                <div class="tip-icon">⚡</div>
+                                <div class="tip-title">Navegación Rápida</div>
+                            </div>
+                            <div class="tip-description">
+                                Usa Alt + [ y Alt + ] para navegar entre múltiples sugerencias sin usar el mouse.
+                            </div>
+                            <div class="tip-example">
+                                Alt + ] → Siguiente sugerencia
+                                Alt + [ → Sugerencia anterior
+                                Tab → Aceptar
+                            </div>
+                            <span class="tip-difficulty beginner">Básico</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">🎯</div>
+                                <div class="tip-title">Inline Chat Eficiente</div>
+                            </div>
+                            <div class="tip-description">
+                                Usa Ctrl + I para hacer preguntas o cambios sin salir del contexto del editor.
+                            </div>
+                            <div class="tip-example">
+                                Selecciona código → Ctrl + I →
+                                "Optimiza esta función"
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contexto -->
+                <div class="content-section" id="context">
+                    <div class="section-title">
+                        <span class="icon">🧠</span>
+                        Gestión de Contexto
+                    </div>
+
+                    <div class="tips-grid">
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">📋</div>
+                                <div class="tip-title">Variables de Contexto</div>
+                            </div>
+                            <div class="tip-description">
+                                Usa variables como #file, #codebase, #selection para proporcionar contexto específico.
+                            </div>
+                            <div class="tip-example">
+                                "#codebase ¿Dónde se usa esta función?"
+                                "#UserService.js explica esta clase"
+                                "#selection optimiza este código"
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="advanced">
+                            <div class="tip-header">
+                                <div class="tip-icon">🔗</div>
+                                <div class="tip-title">Drag & Drop Context</div>
+                            </div>
+                            <div class="tip-description">
+                                Arrastra archivos, carpetas o tabs del editor directamente al chat para añadir contexto.
+                            </div>
+                            <div class="tip-example">
+                                Arrastra UserComponent.tsx → Chat
+                                Automáticamente añade el archivo como contexto
+                            </div>
+                            <span class="tip-difficulty advanced">Avanzado</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">🔍</div>
+                                <div class="tip-title">Indexa tu Workspace</div>
+                            </div>
+                            <div class="tip-description">
+                                Habilita la indexación del workspace para respuestas más precisas sobre tu código.
+                            </div>
+                            <div class="tip-example">
+                                Settings → GitHub Copilot →
+                                "Index workspace for better context"
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="beginner">
+                            <div class="tip-header">
+                                <div class="tip-icon">🎨</div>
+                                <div class="tip-title">Selección Específica</div>
+                            </div>
+                            <div class="tip-description">
+                                Selecciona código específico antes de hacer preguntas para obtener respuestas más precisas.
+                            </div>
+                            <div class="tip-example">
+                                1. Selecciona función problemática
+                                2. Ctrl + I
+                                3. "¿Por qué esta función es lenta?"
+                            </div>
+                            <span class="tip-difficulty beginner">Básico</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">📊</div>
+                                <div class="tip-title">Contexto de Errores</div>
+                            </div>
+                            <div class="tip-description">
+                                Incluye mensajes de error, output del terminal y stack traces en tus prompts.
+                            </div>
+                            <div class="tip-example">
+                                "Error: Cannot read property 'map' of undefined
+                                #terminal #problems ¿cómo lo arreglo?"
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="advanced">
+                            <div class="tip-header">
+                                <div class="tip-icon">🌐</div>
+                                <div class="tip-title">Contexto de Imágenes</div>
+                            </div>
+                            <div class="tip-description">
+                                Adjunta capturas de pantalla, mockups o diagramas para proporcionar contexto visual.
+                            </div>
+                            <div class="tip-example">
+                                Adjunta mockup de UI →
+                                "Genera el CSS para este diseño"
+                            </div>
+                            <span class="tip-difficulty advanced">Avanzado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompting -->
+                <div class="content-section" id="prompting">
+                    <div class="section-title">
+                        <span class="icon">💬</span>
+                        Técnicas de Prompting
+                    </div>
+
+                    <div class="tips-grid">
+                        <div class="tip-card" data-difficulty="beginner">
+                            <div class="tip-header">
+                                <div class="tip-icon">🎯</div>
+                                <div class="tip-title">Comandos Slash</div>
+                            </div>
+                            <div class="tip-description">
+                                Usa comandos como /explain, /fix, /tests para especificar rápidamente tu intención.
+                            </div>
+                            <div class="tip-example">
+                                /explain → Explica código seleccionado
+                                /fix → Corrige problemas
+                                /tests → Genera tests unitarios
+                                /doc → Genera documentación
+                            </div>
+                            <span class="tip-difficulty beginner">Básico</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">👥</div>
+                                <div class="tip-title">Chat Participants</div>
+                            </div>
+                            <div class="tip-description">
+                                Usa @workspace, @vscode, @github para acceder a contexto específico y habilidades especiales.
+                            </div>
+                            <div class="tip-example">
+                                "@workspace ¿dónde está la configuración de la DB?"
+                                "@vscode cómo configurar el debugger?"
+                                "@github #web busca últimas features de React"
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">🔄</div>
+                                <div class="tip-title">Iteración de Prompts</div>
+                            </div>
+                            <div class="tip-description">
+                                Refina tus prompts con preguntas de seguimiento para obtener resultados más precisos.
+                            </div>
+                            <div class="tip-example">
+                                1. "Optimiza esta función"
+                                2. "No uses recursión"
+                                3. "Añade memoización"
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="advanced">
+                            <div class="tip-header">
+                                <div class="tip-icon">🎭</div>
+                                <div class="tip-title">Role Playing</div>
+                            </div>
+                            <div class="tip-description">
+                                Pide a Copilot que asuma roles específicos para obtener perspectivas expertas.
+                            </div>
+                            <div class="tip-example">
+                                "Actúa como Senior React Developer y revisa este componente"
+                                "Como experto en seguridad, evalúa esta API"
+                            </div>
+                            <span class="tip-difficulty advanced">Avanzado</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="beginner">
+                            <div class="tip-header">
+                                <div class="tip-icon">📝</div>
+                                <div class="tip-title">Especifica el Formato</div>
+                            </div>
+                            <div class="tip-description">
+                                Indica claramente el formato de respuesta que necesitas.
+                            </div>
+                            <div class="tip-example">
+                                "Explica en bullet points"
+                                "Dame solo el código"
+                                "Respuesta paso a paso"
+                                "Lista de 5 mejoras"
+                            </div>
+                            <span class="tip-difficulty beginner">Básico</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">📚</div>
+                                <div class="tip-title">Prompt Files</div>
+                            </div>
+                            <div class="tip-description">
+                                Crea archivos .prompt.md reutilizables para prompts complejos que uses frecuentemente.
+                            </div>
+                            <div class="tip-example">
+                                // code-review.prompt.md
+                                Revisa este código enfocándote en:
+                                - Performance
+                                - Seguridad
+                                - Legibilidad
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workflow -->
+                <div class="content-section" id="workflow">
+                    <div class="section-title">
+                        <span class="icon">🔄</span>
+                        Optimización de Workflow
+                    </div>
+
+                    <div class="workflow-section">
+                        <h4>🚀 Workflow Productivo con Copilot</h4>
+                        <div class="workflow-steps">
+                            <div class="workflow-step">
+                                <div class="step-number">1</div>
+                                <h5>Planificación</h5>
+                                <p>Define objetivos claros antes de empezar a codear</p>
+                            </div>
+                            <div class="workflow-step">
+                                <div class="step-number">2</div>
+                                <h5>Contexto</h5>
+                                <p>Abre archivos relevantes y prepara el workspace</p>
+                            </div>
+                            <div class="workflow-step">
+                                <div class="step-number">3</div>
+                                <h5>Implementación</h5>
+                                <p>Usa Copilot para generar código base y completions</p>
+                            </div>
+                            <div class="workflow-step">
+                                <div class="step-number">4</div>
+                                <h5>Revisión</h5>
+                                <p>Usa Chat para explicar, revisar y optimizar</p>
+                            </div>
+                            <div class="workflow-step">
+                                <div class="step-number">5</div>
+                                <h5>Testing</h5>
+                                <p>Genera tests y verifica la funcionalidad</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tips-grid">
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">🎯</div>
+                                <div class="tip-title">Elige el Modelo Correcto</div>
+                            </div>
+                            <div class="tip-description">
+                                Usa modelos rápidos para coding, modelos de razonamiento para planificación compleja.
+                            </div>
+                            <div class="tip-example">
+                                Fast model: Completions rápidas
+                                Reasoning model: Arquitectura, debugging complejo
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="advanced">
+                            <div class="tip-header">
+                                <div class="tip-icon">🔄</div>
+                                <div class="tip-title">Historial Relevante</div>
+                            </div>
+                            <div class="tip-description">
+                                Mantén el historial de chat relevante o inicia nuevas sesiones para cambios de contexto.
+                            </div>
+                            <div class="tip-example">
+                                Nueva sesión para:
+                                - Cambio de proyecto
+                                - Diferente tipo de tarea
+                                - Contexto no relacionado
+                            </div>
+                            <span class="tip-difficulty advanced">Avanzado</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">🧪</div>
+                                <div class="tip-title">TDD con Copilot</div>
+                            </div>
+                            <div class="tip-description">
+                                Usa Test-Driven Development: escribe tests primero, luego deja que Copilot implemente.
+                            </div>
+                            <div class="tip-example">
+                                1. Escribe test que falle
+                                2. Usa Copilot para implementar
+                                3. Test pasa → refactoriza con Copilot
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="beginner">
+                            <div class="tip-header">
+                                <div class="tip-icon">📋</div>
+                                <div class="tip-title">Revisa Antes de Aceptar</div>
+                            </div>
+                            <div class="tip-description">
+                                Siempre revisa y entiende el código que genera Copilot antes de aceptarlo.
+                            </div>
+                            <div class="tip-example">
+                                ✅ Lee el código
+                                ✅ Entiende la lógica
+                                ✅ Verifica seguridad
+                                ✅ Prueba funcionalidad
+                            </div>
+                            <span class="tip-difficulty beginner">Básico</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance -->
+                <div class="content-section" id="performance">
+                    <div class="section-title">
+                        <span class="icon">⚡</span>
+                        Tips de Performance
+                    </div>
+
+                    <div class="performance-tips">
+                        <h4>🚀 Optimización de Performance</h4>
+                        <div class="performance-grid">
+                            <div class="performance-item">
+                                <h5>🔧 Configuración</h5>
+                                <p>Ajusta settings para mejor rendimiento en proyectos grandes</p>
+                            </div>
+                            <div class="performance-item">
+                                <h5>📁 Archivos Abiertos</h5>
+                                <p>Cierra archivos irrelevantes para mejor contexto</p>
+                            </div>
+                            <div class="performance-item">
+                                <h5>🎯 Contexto Específico</h5>
+                                <p>Usa variables de contexto para consultas precisas</p>
+                            </div>
+                            <div class="performance-item">
+                                <h5>⚡ Modelos Rápidos</h5>
+                                <p>Usa modelos optimizados para tareas simples</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tips-grid">
+                        <div class="tip-card" data-difficulty="advanced">
+                            <div class="tip-header">
+                                <div class="tip-icon">⚙️</div>
+                                <div class="tip-title">Configuración Avanzada</div>
+                            </div>
+                            <div class="tip-description">
+                                Optimiza la configuración de Copilot para tu flujo de trabajo específico.
+                            </div>
+                            <div class="tip-example">
+                                // settings.json
+                                "github.copilot.editor.enableAutoCompletions": true
+                                "github.copilot.chat.localeOverride": "es"
+                            </div>
+                            <span class="tip-difficulty advanced">Avanzado</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">🔄</div>
+                                <div class="tip-title">Disable en "Hacking Mode"</div>
+                            </div>
+                            <div class="tip-description">
+                                Desactiva temporalmente Copilot cuando estés experimentando o escribiendo código temporal.
+                            </div>
+                            <div class="tip-example">
+                                Status bar → Copilot → 
+                                "Disable completions for [language]"
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="beginner">
+                            <div class="tip-header">
+                                <div class="tip-icon">📊</div>
+                                <div class="tip-title">Monitorea tu Uso</div>
+                            </div>
+                            <div class="tip-description">
+                                Revisa tus estadísticas de uso para entender cómo Copilot te está ayudando.
+                            </div>
+                            <div class="tip-example">
+                                VS Code → Command Palette →
+                                "GitHub Copilot: Show Usage Stats"
+                            </div>
+                            <span class="tip-difficulty beginner">Básico</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avanzado -->
+                <div class="content-section" id="advanced">
+                    <div class="section-title">
+                        <span class="icon">🚀</span>
+                        Técnicas Avanzadas
+                    </div>
+
+                    <div class="tips-grid">
+                        <div class="tip-card" data-difficulty="advanced">
+                            <div class="tip-header">
+                                <div class="tip-icon">🔌</div>
+                                <div class="tip-title">MCP Servers</div>
+                            </div>
+                            <div class="tip-description">
+                                Conecta servidores MCP para extender las capacidades de Agent Mode con herramientas personalizadas.
+                            </div>
+                            <div class="tip-example">
+                                MCP servers: Database tools, AWS CLI, 
+                                Custom APIs, Monitoring tools
+                            </div>
+                            <span class="tip-difficulty advanced">Avanzado</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="advanced">
+                            <div class="tip-header">
+                                <div class="tip-icon">🎨</div>
+                                <div class="tip-title">Custom Instructions por Archivo</div>
+                            </div>
+                            <div class="tip-description">
+                                Crea instrucciones específicas para diferentes tipos de archivos o proyectos.
+                            </div>
+                            <div class="tip-example">
+                                --- applyTo: "**/*.tsx" ---
+                                - Usar React.FC para componentes
+                                - Props siempre tipadas
+                                - Hooks al inicio
+                            </div>
+                            <span class="tip-difficulty advanced">Avanzado</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="advanced">
+                            <div class="tip-header">
+                                <div class="tip-icon">🔄</div>
+                                <div class="tip-title">Chat Modes Personalizados</div>
+                            </div>
+                            <div class="tip-description">
+                                Crea modos de chat personalizados para flujos de trabajo específicos.
+                            </div>
+                            <div class="tip-example">
+                                // .github/chatmodes/review.md
+                                description: Code review mode
+                                tools: ['codebase', 'usages']
+                                # Review mode instructions...
+                            </div>
+                            <span class="tip-difficulty advanced">Avanzado</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="advanced">
+                            <div class="tip-header">
+                                <div class="tip-icon">🔍</div>
+                                <div class="tip-title">Análisis de Similaridades</div>
+                            </div>
+                            <div class="tip-description">
+                                Configura la detección de similaridades con código público para evitar coincidencias.
+                            </div>
+                            <div class="tip-example">
+                                Settings → Copilot → 
+                                "Suggestions matching public code": block/allow
+                            </div>
+                            <span class="tip-difficulty advanced">Avanzado</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">🌍</div>
+                                <div class="tip-title">Configuración de Idioma</div>
+                            </div>
+                            <div class="tip-description">
+                                Configura el idioma preferido para respuestas y comentarios de Copilot.
+                            </div>
+                            <div class="tip-example">
+                                "github.copilot.chat.localeOverride": "es"
+                                → Respuestas en español
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="advanced">
+                            <div class="tip-header">
+                                <div class="tip-icon">🛡️</div>
+                                <div class="tip-title">Configuración Empresarial</div>
+                            </div>
+                            <div class="tip-description">
+                                Implementa políticas y configuraciones para equipos y organizaciones.
+                            </div>
+                            <div class="tip-example">
+                                - Filtros de contenido
+                                - Logging y auditoría
+                                - Configuración de modelos
+                                - Políticas de uso
+                            </div>
+                            <span class="tip-difficulty advanced">Avanzado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar right">
+                <div class="productivity-meter">
+                    <h4>📊 Medidor de Productividad</h4>
+                    <div class="meter-circle">
+                        <svg>
+                            <circle cx="60" cy="60" r="45" class="meter-bg"></circle>
+                            <circle cx="60" cy="60" r="45" class="meter-progress"></circle>
+                        </svg>
+                        <div class="meter-text">85%</div>
+                    </div>
+                    <p>¡Excelente uso de Copilot!</p>
+                </div>
+
+                <div class="quick-actions">
+                    <h4 style="margin-bottom: 15px; color: #1e293b;">⚡ Acciones Rápidas</h4>
+                    <button class="action-button" onclick="openCopilotChat()">
+                        💬 Abrir Copilot Chat
+                    </button>
+                    <button class="action-button" onclick="showShortcuts()">
+                        ⌨️ Ver Todos los Atajos
+                    </button>
+                    <button class="action-button" onclick="exportTips()">
+                        📥 Exportar Tips Favoritos
+                    </button>
+                    <button class="action-button" onclick="resetProgress()">
+                        🔄 Reiniciar Progreso
+                    </button>
+                </div>
+
+                <div class="settings-panel">
+                    <h4 style="margin-bottom: 15px; color: #1e293b;">⚙️ Configuración</h4>
+                    <div class="setting-item">
+                        <span class="setting-label">Auto-completions</span>
+                        <div class="toggle active" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <span class="setting-label">Inline Chat</span>
+                        <div class="toggle active" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <span class="setting-label">Similarity detection</span>
+                        <div class="toggle" onclick="toggleSetting(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <span class="setting-label">Telemetry</span>
+                        <div class="toggle active" onclick="toggleSetting(this)"></div>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border-radius: 10px; padding: 20px; margin-top: 20px; text-align: center;">
+                    <h4>🎉 ¡Felicidades!</h4>
+                    <p style="margin-top: 10px; font-size: 14px;">Has completado la guía de tips y tricks para Copilot</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentDifficulty = 'all';
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active from all nav buttons
+            document.querySelectorAll('.category-nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function filterByDifficulty(difficulty) {
+            currentDifficulty = difficulty;
+
+            // Update filter buttons
+            document.querySelectorAll('.filter-tag').forEach(tag => {
+                tag.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Filter tip cards
+            document.querySelectorAll('.tip-card').forEach(card => {
+                if (difficulty === 'all' || card.dataset.difficulty === difficulty) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function searchTips(query) {
+            const cards = document.querySelectorAll('.tip-card');
+            const searchTerm = query.toLowerCase();
+
+            cards.forEach(card => {
+                const title = card.querySelector('.tip-title').textContent.toLowerCase();
+                const description = card.querySelector('.tip-description').textContent.toLowerCase();
+                const example = card.querySelector('.tip-example').textContent.toLowerCase();
+
+                if (title.includes(searchTerm) || description.includes(searchTerm) || example.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleSetting(toggle) {
+            toggle.classList.toggle('active');
+        }
+
+        function openCopilotChat() {
+            alert('Usa Ctrl+Alt+I para abrir Copilot Chat en VS Code');
+        }
+
+        function showShortcuts() {
+            showSection('shortcuts');
+            document.querySelector('[onclick="showSection(\'shortcuts\')"]').classList.add('active');
+        }
+
+        function exportTips() {
+            const tips = Array.from(document.querySelectorAll('.tip-card')).map(card => ({
+                title: card.querySelector('.tip-title').textContent,
+                description: card.querySelector('.tip-description').textContent,
+                example: card.querySelector('.tip-example').textContent,
+                difficulty: card.dataset.difficulty
+            }));
+
+            const blob = new Blob([JSON.stringify(tips, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'copilot-tips.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function resetProgress() {
+            // Reset all settings to default
+            document.querySelectorAll('.toggle.active').forEach(toggle => {
+                toggle.classList.remove('active');
+            });
+            
+            // Reset to first section
+            showSection('basics');
+            document.querySelector('[onclick="showSection(\'basics\')"]').classList.add('active');
+            
+            // Reset filters
+            filterByDifficulty('all');
+            document.querySelector('[onclick="filterByDifficulty(\'all\')"]').classList.add('active');
+            
+            // Clear search
+            document.querySelector('.search-box').value = '';
+            searchTips('');
+            
+            alert('Configuración y progreso reiniciados');
+        }
+
+        // Initialize default settings
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set some toggles as active by default
+            const defaultActiveToggles = [0, 1, 3]; // Auto-completions, Inline Chat, Telemetry
+            document.querySelectorAll('.toggle').forEach((toggle, index) => {
+                if (defaultActiveToggles.includes(index)) {
+                    toggle.classList.add('active');
+                }
+            });
+        });
+
+        // Animate productivity meter on load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const progress = document.querySelector('.meter-progress');
+                progress.style.strokeDashoffset = '70'; // 85% progress
+            }, 1000);
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips y Tricks para Copilot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            opacity: 0.9;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr 300px;
+            gap: 0;
+            min-height: 800px;
+        }
+
+        .sidebar {
+            background: #f8fafc;
+            padding: 30px;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .sidebar.right {
+            border-right: none;
+            border-left: 1px solid #e2e8f0;
+        }
+
+        .main-content {
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .category-nav {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category-nav li {
+            margin-bottom: 10px;
+        }
+
+        .category-nav button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #64748b;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-nav button.active {
+            background: #1e40af;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .category-nav button:hover {
+            background: #f1f5f9;
+            transform: translateX(3px);
+        }
+
+        .category-nav button.active:hover {
+            background: #1d4ed8;
+        }
+
+        .category-icon {
+            margin-right: 12px;
+            font-size: 1.2em;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #1e293b;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title .icon {
+            margin-right: 15px;
+            font-size: 1.5em;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .tip-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .tip-icon {
+            background: #1e40af;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .tip-title {
+            font-size: 1.2em;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .tip-description {
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .tip-example {
+            background: #1e293b;
+            color: #10b981;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .tip-difficulty {
+            display: inline-block;
+            background: #fbbf24;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .tip-difficulty.beginner {
+            background: #10b981;
+        }
+
+        .tip-difficulty.intermediate {
+            background: #f59e0b;
+        }
+
+        .tip-difficulty.advanced {
+            background: #ef4444;
+        }
+
+        .shortcuts-section {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .shortcut-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .shortcut-action {
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        .shortcut-keys {
+            background: #1e293b;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-family: 'Consolas', monospace;
+            font-size: 12px;
+        }
+
+        .quick-actions {
+            margin-bottom: 25px;
+        }
+
+        .action-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #1e293b;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .action-button:hover {
+            border-color: #1e40af;
+            background: #f0f9ff;
+        }
+
+        .settings-panel {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .toggle {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: #cbd5e1;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .toggle.active {
+            background: #1e40af;
+        }
+
+        .toggle::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle.active::after {
+            transform: translateX(26px);
+        }
+
+        .productivity-meter {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .meter-circle {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .meter-circle svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .meter-circle circle {
+            fill: none;
+            stroke-width: 8;
+        }
+
+        .meter-bg {
+            stroke: rgba(255,255,255,0.2);
+        }
+
+        .meter-progress {
+            stroke: white;
+            stroke-linecap: round;
+            stroke-dasharray: 283;
+            stroke-dashoffset: 70;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .meter-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #1e40af;
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .filter-tag {
+            background: #e2e8f0;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tag.active {
+            background: #1e40af;
+            color: white;
+        }
+
+        .filter-tag:hover {
+            background: #cbd5e1;
+        }
+
+        .filter-tag.active:hover {
+            background: #1d4ed8;
+        }
+
+        .workflow-section {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .workflow-step {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .step-number {
+            background: white;
+            color: #f59e0b;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+        }
+
+        .performance-tips {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .performance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .performance-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .performance-item h5 {
+            margin-bottom: 8px;
+        }
+
+        .code-snippet {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            color: #10b981;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Tips & Tricks para Copilot</h1>
+            <p>Dashboard completo para maximizar tu productividad con GitHub Copilot</p>
+            
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Tips Prácticos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Atajos de Teclado</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Niveles de Dificultad</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Productividad</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="sidebar">
+                <h3 style="margin-bottom: 20px; color: #1e293b;">📂 Categorías</h3>
+                <ul class="category-nav">
+                    <li>
+                        <button class="active" onclick="showSection('basics')">
+                            <span class="category-icon">🎯</span>
+                            Fundamentos
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showSection('shortcuts')">
+                            <span class="category-icon">⚡</span>
+                            Atajos
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showSection('context')">
+                            <span class="category-icon">🧠</span>
+                            Contexto
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showSection('prompting')">
+                            <span class="category-icon">💬</span>
+                            Prompting
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showSection('workflow')">
+                            <span class="category-icon">🔄</span>
+                            Workflow
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showSection('performance')">
+                            <span class="category-icon">⚡</span>
+                            Performance
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showSection('advanced')">
+                            <span class="category-icon">🚀</span>
+                            Avanzado
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="search-box-container" style="margin-top: 30px;">
+                    <input type="text" class="search-box" placeholder="🔍 Buscar tips..." onkeyup="searchTips(this.value)">
+                </div>
+
+                <div class="filter-tags">
+                    <button class="filter-tag active" onclick="filterByDifficulty('all')">Todos</button>
+                    <button class="filter-tag" onclick="filterByDifficulty('beginner')">Básico</button>
+                    <button class="filter-tag" onclick="filterByDifficulty('intermediate')">Intermedio</button>
+                    <button class="filter-tag" onclick="filterByDifficulty('advanced')">Avanzado</button>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <!-- Fundamentos -->
+                <div class="content-section active" id="basics">
+                    <div class="section-title">
+                        <span class="icon">🎯</span>
+                        Fundamentos Esenciales
+                    </div>
+
+                    <div class="tips-grid">
+                        <div class="tip-card" data-difficulty="beginner">
+                            <div class="tip-header">
+                                <div class="tip-icon">🏗️</div>
+                                <div class="tip-title">Elige la Herramienta Correcta</div>
+                            </div>
+                            <div class="tip-description">
+                                Usa Ask para preguntas, Edit para cambios específicos, Agent para tareas complejas.
+                            </div>
+                            <div class="tip-example">
+                                Ask: "¿Qué hace esta función?"
+                                Edit: Modificar archivos específicos
+                                Agent: "Crea una app completa"
+                            </div>
+                            <span class="tip-difficulty beginner">Básico</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="beginner">
+                            <div class="tip-header">
+                                <div class="tip-icon">📝</div>
+                                <div class="tip-title">Nombres Descriptivos</div>
+                            </div>
+                            <div class="tip-description">
+                                Usa nombres de funciones y variables descriptivos para mejores sugerencias.
+                            </div>
+                            <div class="tip-example">
+                                ✅ function calculateUserAge()
+                                ❌ function calc()
+                            </div>
+                            <span class="tip-difficulty beginner">Básico</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">🎨</div>
+                                <div class="tip-title">Instrucciones Personalizadas</div>
+                            </div>
+                            <div class="tip-description">
+                                Configura instrucciones personalizadas para que Copilot genere código según tu estilo.
+                            </div>
+                            <div class="tip-example">
+                                // .copilot-instructions.md
+                                - Usar arrow functions
+                                - Preferir const sobre let
+                                - Incluir TypeScript types
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="beginner">
+                            <div class="tip-header">
+                                <div class="tip-icon">📂</div>
+                                <div class="tip-title">Archivos Abiertos</div>
+                            </div>
+                            <div class="tip-description">
+                                Mantén archivos relevantes abiertos para que Copilot tenga mejor contexto.
+                            </div>
+                            <div class="tip-example">
+                                Abierto: models.js, utils.js, config.js
+                                → Mejor contexto para sugerencias
+                            </div>
+                            <span class="tip-difficulty beginner">Básico</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="intermediate">
+                            <div class="tip-header">
+                                <div class="tip-icon">🏷️</div>
+                                <div class="tip-title">Patrones Consistentes</div>
+                            </div>
+                            <div class="tip-description">
+                                Mantén patrones consistentes en tu código para que Copilot los reconozca y continúe.
+                            </div>
+                            <div class="tip-example">
+                                // Patrón de validación
+                                const validateEmail = (email) => { ... }
+                                const validatePassword = (pass) => { ... }
+                                // Copilot continuará el patrón
+                            </div>
+                            <span class="tip-difficulty intermediate">Intermedio</span>
+                        </div>
+
+                        <div class="tip-card" data-difficulty="beginner">
+                            <div class="tip-header">
+                                <div class="tip-icon">💡</div>
+                                <div class="tip-title">Comentarios Útiles</div>
+                            </div>
+                            <div class="tip-description">
+                                Escribe comentarios descriptivos para guiar a Copilot hacia mejores sugerencias.
+                            </div>
+                            <div class="tip-example">
+                                // Función que calcula descuento basado en nivel VIP
+                                function calculateDiscount(userLevel, amount) {
+                                    // Copilot generará lógica apropiada
+                                }
+                            </div>
+                            <span class="tip-difficulty beginner">Básico</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Atajos -->
+                <div class="content-section" id="shortcuts">
+                    <div class="section-title">
+                        <span class="icon">⚡</span>
+                        Atajos de Teclado Esenciales
+                    </div>
+
+                    <div class="shortcuts-section">
+                        <h4 style="margin-bottom: 20px;">🚀 Atajos Principales</h4>
+                        <div class="shortcuts-grid">
+                            <div class="shortcut-item">
+                                <span class="shortcut-action">Aceptar sugerencia</span>
+                                <span class="shortcut-keys">Tab</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-action">Siguiente sugerencia</span>
+                                <span class="shortcut-keys">Alt + ]</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-action">Sugerencia anterior</span>
+                                <span class="shortcut-keys">Alt + [</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-action">Descartar sugerencia</span>
+                                <span class="shortcut-keys">Esc</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-action">Abrir Chat</span>
+                                <span class="shortcut-keys">Ctrl + Alt + I</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-action">Chat Inline</span>
+                                <span class="shortcut-keys

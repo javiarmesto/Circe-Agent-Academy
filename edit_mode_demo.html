@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo: Edit Mode en VS Code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 600px;
+        }
+
+        .demo-sidebar {
+            background: #f8fafc;
+            padding: 30px;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .demo-main {
+            padding: 30px;
+            background: white;
+        }
+
+        .workflow-step {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #8b5cf6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .workflow-step:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .workflow-step.active {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            transform: translateX(10px);
+        }
+
+        .step-number {
+            background: #8b5cf6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .workflow-step.active .step-number {
+            background: white;
+            color: #8b5cf6;
+        }
+
+        .step-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .step-description {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .demo-content {
+            display: none;
+        }
+
+        .demo-content.active {
+            display: block;
+        }
+
+        .demo-header {
+            margin-bottom: 25px;
+        }
+
+        .demo-title {
+            font-size: 1.8em;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .demo-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .code-editor {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+
+        .file-tab {
+            background: #334155;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px 8px 0 0;
+            font-size: 12px;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .file-tab.modified {
+            color: #fbbf24;
+        }
+
+        .chat-interface {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .chat-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-family: inherit;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+        }
+
+        .context-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .context-chip {
+            background: #8b5cf6;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .context-chip .remove {
+            margin-left: 8px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .context-chip .remove:hover {
+            opacity: 1;
+        }
+
+        .send-button {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .diff-viewer {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .diff-line {
+            padding: 5px 10px;
+            margin: 2px 0;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+        }
+
+        .diff-line.added {
+            background: #dcfce7;
+            color: #166534;
+            border-left: 3px solid #16a34a;
+        }
+
+        .diff-line.removed {
+            background: #fef2f2;
+            color: #991b1b;
+            border-left: 3px solid #dc2626;
+        }
+
+        .diff-line.unchanged {
+            color: #6b7280;
+        }
+
+        .edit-controls {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .control-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .keep-button {
+            background: #10b981;
+            color: white;
+        }
+
+        .keep-button:hover {
+            background: #059669;
+        }
+
+        .undo-button {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .undo-button:hover {
+            background: #d97706;
+        }
+
+        .settings-panel {
+            background: #f1f5f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .settings-panel h4 {
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .toggle {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: #cbd5e1;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .toggle.active {
+            background: #8b5cf6;
+        }
+
+        .toggle::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle.active::after {
+            transform: translateX(26px);
+        }
+
+        .tips-section {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tips-section h4 {
+            margin-bottom: 15px;
+        }
+
+        .tip-item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .tip-item:last-child {
+            border-bottom: none;
+        }
+
+        .context-selector {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .context-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .context-option {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .context-option:hover {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .context-option.selected {
+            background: #8b5cf6;
+            color: white;
+            border-color: #8b5cf6;
+        }
+
+        .simulation-controls {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .sim-button {
+            background: #64748b;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .sim-button:hover {
+            background: #475569;
+        }
+
+        .sim-button.primary {
+            background: #8b5cf6;
+        }
+
+        .sim-button.primary:hover {
+            background: #7c3aed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✏️ Edit Mode Demo</h1>
+            <p>Experimenta cómo funciona Edit Mode con una simulación interactiva</p>
+        </div>
+
+        <div class="demo-container">
+            <div class="demo-sidebar">
+                <h3 style="margin-bottom: 20px; color: #1e293b;">Flujo de Trabajo</h3>
+                
+                <div class="workflow-step active" onclick="showDemo(0)">
+                    <div class="step-number">1</div>
+                    <div>
+                        <div class="step-title">Activar Edit Mode</div>
+                        <div class="step-description">Abrir Chat view y seleccionar "Edit"</div>
+                    </div>
+                </div>
+
+                <div class="workflow-step" onclick="showDemo(1)">
+                    <div class="step-number">2</div>
+                    <div>
+                        <div class="step-title">Añadir Contexto</div>
+                        <div class="step-description">Seleccionar archivos y proporcionar contexto</div>
+                    </div>
+                </div>
+
+                <div class="workflow-step" onclick="showDemo(2)">
+                    <div class="step-number">3</div>
+                    <div>
+                        <div class="step-title">Escribir Prompt</div>
+                        <div class="step-description">Describir los cambios que necesitas</div>
+                    </div>
+                </div>
+
+                <div class="workflow-step" onclick="showDemo(3)">
+                    <div class="step-number">4</div>
+                    <div>
+                        <div class="step-title">Revisar Ediciones</div>
+                        <div class="step-description">Ver y navegar los cambios sugeridos</div>
+                    </div>
+                </div>
+
+                <div class="workflow-step" onclick="showDemo(4)">
+                    <div class="step-number">5</div>
+                    <div>
+                        <div class="step-title">Aceptar/Rechazar</div>
+                        <div class="step-description">Confirmar o descartar los cambios</div>
+                    </div>
+                </div>
+
+                <div class="workflow-step" onclick="showDemo(5)">
+                    <div class="step-number">6</div>
+                    <div>
+                        <div class="step-title">Configuración</div>
+                        <div class="step-description">Ajustar settings de Edit Mode</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-main">
+                <!-- Demo 0: Activar Edit Mode -->
+                <div class="demo-content active">
+                    <div class="demo-header">
+                        <h2 class="demo-title">Activar Edit Mode</h2>
+                        <p class="demo-description">Edit Mode te permite aplicar cambios directos a múltiples archivos basados en tus instrucciones.</p>
+                    </div>
+
+                    <div class="code-editor">
+                        <div class="file-tab">VS Code</div>
+                        <br><br>
+                        <div style="color: #10b981;">// Paso 1: Abrir Chat view</div>
+                        <div>Ctrl + Alt + I</div>
+                        <br>
+                        <div style="color: #10b981;">// Paso 2: Seleccionar "Edit" del dropdown</div>
+                        <div>Chat Mode: [Ask] [<span style="background: #8b5cf6; padding: 2px 8px; border-radius: 4px;">Edit</span>] [Agent]</div>
+                        <br>
+                        <div style="color: #10b981;">// ¡Listo para editar!</div>
+                    </div>
+
+                    <div class="tips-section">
+                        <h4>💡 Cuándo usar Edit Mode</h4>
+                        <div class="tip-item">✅ Sabes exactamente qué archivos modificar</div>
+                        <div class="tip-item">✅ Cambios específicos y controlados</div>
+                        <div class="tip-item">✅ Refactoring dirigido</div>
+                        <div class="tip-item">✅ Quieres revisar antes de aplicar</div>
+                    </div>
+
+                    <div class="simulation-controls">
+                        <button class="sim-button primary" onclick="simulateOpen()">🚀 Simular Apertura</button>
+                        <button class="sim-button" onclick="resetDemo()">🔄 Reset</button>
+                    </div>
+                </div>
+
+                <!-- Demo 1: Añadir Contexto -->
+                <div class="demo-content">
+                    <div class="demo-header">
+                        <h2 class="demo-title">Añadir Contexto</h2>
+                        <p class="demo-description">El contexto es crucial para que Edit Mode entienda exactamente qué modificar.</p>
+                    </div>
+
+                    <div class="context-selector">
+                        <h4>📁 Seleccionar Contexto</h4>
+                        <div class="context-options">
+                            <div class="context-option" onclick="toggleContext(this, 'app.js')">📄 app.js</div>
+                            <div class="context-option" onclick="toggleContext(this, 'components/')">📁 components/</div>
+                            <div class="context-option" onclick="toggleContext(this, 'package.json')">📄 package.json</div>
+                            <div class="context-option" onclick="toggleContext(this, 'UserService')">🔧 UserService</div>
+                            <div class="context-option" onclick="toggleContext(this, '#selection')">📝 Selección</div>
+                            <div class="context-option" onclick="toggleContext(this, '#codebase')">🏗️ Codebase</div>
+                        </div>
+                    </div>
+
+                    <div class="context-chips" id="contextChips">
+                        <!-- Los chips aparecerán aquí dinámicamente -->
+                    </div>
+
+                    <div class="tips-section">
+                        <h4>🎯 Tipos de Contexto</h4>
+                        <div class="tip-item"><strong>#archivo.js</strong> - Archivo específico</div>
+                        <div class="tip-item"><strong>#carpeta/</strong> - Carpeta completa</div>
+                        <div class="tip-item"><strong>#función</strong> - Función específica</div>
+                        <div class="tip-item"><strong>#selection</strong> - Código seleccionado</div>
+                        <div class="tip-item"><strong>Drag & Drop</strong> - Arrastra archivos al chat</div>
+                    </div>
+                </div>
+
+                <!-- Demo 2: Escribir Prompt -->
+                <div class="demo-content">
+                    <div class="demo-header">
+                        <h2 class="demo-title">Escribir Prompt</h2>
+                        <p class="demo-description">Describe claramente qué cambios necesitas. Sé específico pero conciso.</p>
+                    </div>
+
+                    <div class="chat-interface">
+                        <div class="context-chips">
+                            <div class="context-chip">📄 UserComponent.jsx <span class="remove">×</span></div>
+                            <div class="context-chip">📄 userService.js <span class="remove">×</span></div>
+                        </div>
+                        
+                        <textarea class="chat-input" id="promptInput" placeholder="Describe los cambios que necesitas..." rows="4">Convierte este componente de JavaScript a TypeScript, añade tipos estrictos para todas las props y funciones</textarea>
+                        
+                        <button class="send-button" onclick="simulateEdit()">Enviar Edición</button>
+                    </div>
+
+                    <div class="tips-section">
+                        <h4>📝 Ejemplos de Prompts Efectivos</h4>
+                        <div class="tip-item">"Refactoriza las funciones a arrow functions"</div>
+                        <div class="tip-item">"Añade manejo de errores try-catch a todas las funciones async"</div>
+                        <div class="tip-item">"Actualiza las importaciones de React 17 a React 18"</div>
+                        <div class="tip-item">"Convierte el CSS a usar CSS modules"</div>
+                    </div>
+                </div>
+
+                <!-- Demo 3: Revisar Ediciones -->
+                <div class="demo-content">
+                    <div class="demo-header">
+                        <h2 class="demo-title">Revisar Ediciones</h2>
+                        <p class="demo-description">Copilot muestra todos los cambios propuestos. Navega y revisa cada modificación.</p>
+                    </div>
+
+                    <div class="code-editor">
+                        <div class="file-tab modified">UserComponent.tsx ●</div>
+                        <div class="file-tab">userService.ts</div>
+                        <br><br>
+                        <div style="color: #10b981;">// Cambios propuestos en UserComponent.tsx</div>
+                    </div>
+
+                    <div class="diff-viewer">
+                        <div class="diff-line removed">- function UserComponent(props) {</div>
+                        <div class="diff-line added">+ interface UserProps {</div>
+                        <div class="diff-line added">+   name: string;</div>
+                        <div class="diff-line added">+   email: string;</div>
+                        <div class="diff-line added">+ }</div>
+                        <div class="diff-line added">+ </div>
+                        <div class="diff-line added">+ const UserComponent: React.FC&lt;UserProps&gt; = ({ name, email }) =&gt; {</div>
+                        <div class="diff-line unchanged">   const [loading, setLoading] = useState(false);</div>
+                        <div class="diff-line unchanged">   </div>
+                        <div class="diff-line removed">-   const handleClick = function() {</div>
+                        <div class="diff-line added">+   const handleClick = (): void =&gt; {</div>
+                        <div class="diff-line unchanged">     setLoading(true);</div>
+                        <div class="diff-line unchanged">   };</div>
+                    </div>
+
+                    <div class="edit-controls">
+                        <button class="control-button keep-button">✅ Keep Changes</button>
+                        <button class="control-button undo-button">↶ Undo Changes</button>
+                    </div>
+
+                    <div class="tips-section">
+                        <h4>🔍 Controles de Navegación</h4>
+                        <div class="tip-item"><strong>Ctrl+Alt+PageDown</strong> - Siguiente cambio</div>
+                        <div class="tip-item"><strong>Ctrl+Alt+PageUp</strong> - Cambio anterior</div>
+                        <div class="tip-item"><strong>Editor overlay</strong> - Botones ↑ ↓ en el editor</div>
+                        <div class="tip-item"><strong>Chat view</strong> - Lista de archivos modificados</div>
+                    </div>
+                </div>
+
+                <!-- Demo 4: Aceptar/Rechazar -->
+                <div class="demo-content">
+                    <div class="demo-header">
+                        <h2 class="demo-title">Aceptar/Rechazar Cambios</h2>
+                        <p class="demo-description">Tienes control total sobre qué cambios aplicar. Puedes aceptar o rechazar archivo por archivo.</p>
+                    </div>
+
+                    <div class="code-editor">
+                        <div style="color: #10b981;">// Archivos con cambios pendientes:</div>
+                        <br>
+                        <div style="color: #fbbf24;">📄 UserComponent.tsx ● (3 cambios)</div>
+                        <div style="color: #fbbf24;">📄 userService.ts ● (2 cambios)</div>
+                        <div style="color: #10b981;">📄 types.ts ✓ (nuevo archivo)</div>
+                        <br>
+                        <div style="color: #64748b;">// Indicadores en Explorer:</div>
+                        <div style="color: #fbbf24;">● = Cambios pendientes</div>
+                        <div style="color: #10b981;">✓ = Cambios aplicados</div>
+                    </div>
+
+                    <div class="edit-controls">
+                        <button class="control-button keep-button" onclick="acceptFile('UserComponent.tsx')">✅ Keep UserComponent.tsx</button>
+                        <button class="control-button undo-button" onclick="rejectFile('userService.ts')">❌ Undo userService.ts</button>
+                    </div>
+
+                    <div class="edit-controls">
+                        <button class="control-button" style="background: #3b82f6; color: white;" onclick="acceptAll()">✅ Keep All Changes</button>
+                        <button class="control-button" style="background: #ef4444; color: white;" onclick="rejectAll()">❌ Undo All Changes</button>
+                    </div>
+
+                    <div class="tips-section">
+                        <h4>⚡ Opciones de Control</h4>
+                        <div class="tip-item"><strong>Keep</strong> - Aplicar cambios del archivo</div>
+                        <div class="tip-item"><strong>Undo</strong> - Descartar cambios del archivo</div>
+                        <div class="tip-item"><strong>Keep All</strong> - Aplicar todos los cambios</div>
+                        <div class="tip-item"><strong>Undo All</strong> - Descartar todos los cambios</div>
+                        <div class="tip-item"><strong>Iteración</strong> - Continúa refinando con prompts adicionales</div>
+                    </div>
+                </div>
+
+                <!-- Demo 5: Configuración -->
+                <div class="demo-content">
+                    <div class="demo-header">
+                        <h2 class="demo-title">Configuración de Edit Mode</h2>
+                        <p class="demo-description">Personaliza el comportamiento de Edit Mode según tus preferencias.</p>
+                    </div>
+
+                    <div class="settings-panel">
+                        <h4>⚙️ Edit Mode Settings</h4>
+                        
+                        <div class="setting-item">
+                            <div>
+                                <strong>Confirm Edit Request Removal</strong>
+                                <div style="font-size: 12px; color: #64748b;">Pedir confirmación antes de deshacer</div>
+                            </div>
+                            <div class="toggle active" onclick="toggleSetting(this)"></div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div>
+                                <strong>Confirm Edit Request Retry</strong>
+                                <div style="font-size: 12px; color: #64748b;">Pedir confirmación antes de rehacer</div>
+                            </div>
+                            <div class="toggle active" onclick="toggleSetting(this)"></div>
+                        </div>
+
+                        <div class="setting-item">
+                            <div>
+                                <strong>Auto Accept Delay</strong>
+                                <div style="font-size: 12px; color: #64748b;">Tiempo antes de auto-aceptar (0 = desactivado)</div>
+                            </div>
+                            <input type="number" value="0" style="width: 60px; padding: 5px; border: 1px solid #e2e8f0; border-radius: 4px;">
+                        </div>
+
+                        <div class="setting-item">
+                            <div>
+                                <strong>Codebase Search (Preview)</strong>
+                                <div style="font-size: 12px; color: #64748b;">Buscar archivos automáticamente con #codebase</div>
+                            </div>
+                            <div class="toggle" onclick="toggleSetting(this)"></div>
+                        </div>
+                    </div>
+
+                    <div class="tips-section">
+                        <h4>🎛️ Configuraciones Útiles</h4>
+                        <div class="tip-item"><strong>Auto Accept:</strong> Para workflows automatizados</div>
+                        <div class="tip-item"><strong>Confirmations:</strong> Para mayor control y seguridad</div>
+                        <div class="tip-item"><strong>Codebase Search:</strong> Para proyectos grandes</div>
+                        <div class="tip-item"><strong>Workspace Settings:</strong> Compartir config con el equipo</div>
+                    </div>
+
+                    <div class="edit-controls">
+                        <button class="control-button" style="background: #10b981; color: white;">💾 Guardar Configuración</button>
+                        <button class="control-button" style="background: #64748b; color: white;">🔄 Reset a Defaults</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentDemo = 0;
+        let selectedContexts = [];
+
+        function showDemo(demoIndex) {
+            // Ocultar todos los demos
+            const contents = document.querySelectorAll('.demo-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remover active de todos los steps
+            const steps = document.querySelectorAll('.workflow-step');
+            steps.forEach(step => step.classList.remove('active'));
+            
+            // Mostrar el demo seleccionado
+            contents[demoIndex].classList.add('active');
+            steps[demoIndex].classList.add('active');
+            
+            currentDemo = demoIndex;
+        }
+
+        function toggleContext(element, context) {
+            element.classList.toggle('selected');
+            
+            if (element.classList.contains('selected')) {
+                selectedContexts.push(context);
+            } else {
+                selectedContexts = selectedContexts.filter(c => c !== context);
+            }
+            
+            updateContextChips();
+        }
+
+        function updateContextChips() {
+            const chipsContainer = document.getElementById('contextChips');
+            chipsContainer.innerHTML = '';
+            
+            selectedContexts.forEach(context => {
+                const chip = document.createElement('div');
+                chip.className = 'context-chip';
+                chip.innerHTML = `${getContextIcon(context)} ${context} <span class="remove" onclick="removeContext('${context}')">×</span>`;
+                chipsContainer.appendChild(chip);
+            });
+        }
+
+        function getContextIcon(context) {
+            if (context.includes('.js') || context.includes('.ts') || context.includes('.jsx') || context.includes('.tsx')) {
+                return '📄';
+            } else if (context.includes('/')) {
+                return '📁';
+            } else if (context.startsWith('#')) {
+                return '🔧';
+            }
+            return '📄';
+        }
+
+        function removeContext(context) {
+            selectedContexts = selectedContexts.filter(c => c !== context);
+            updateContextChips();
+            
+            // También deseleccionar en el selector
+            const options = document.querySelectorAll('.context-option');
+            options.forEach(option => {
+                if (option.textContent.includes(context)) {
+                    option.classList.remove('selected');
+                }
+            });
+        }
+
+        function simulateOpen() {
+            // Simular la apertura del chat
+            const button = event.target;
+            button.innerHTML = '✅ Chat Abierto';
+            button.style.background = '#10b981';
+            
+            setTimeout(() => {
+                button.innerHTML = '🚀 Simular Apertura';
+                button.style.background = '';
+            }, 2000);
+        }
+
+        function simulateEdit() {
+            const button = event.target;
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '⏳ Procesando...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = '✅ Edición Enviada';
+                button.style.background = '#10b981';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    button.style.background = '';
+                }, 2000);
+            }, 1500);
+        }
+
+        function acceptFile(filename) {
+            const button = event.target;
+            button.innerHTML = `✅ ${filename} Aplicado`;
+            button.style.background = '#10b981';
+            button.disabled = true;
+        }
+
+        function rejectFile(filename) {
+            const button = event.target;
+            button.innerHTML = `❌ ${filename} Descartado`;
+            button.style.background = '#ef4444';
+            button.disabled = true;
+        }
+
+        function acceptAll() {
+            const button = event.target;
+            button.innerHTML = '✅ Todos los cambios aplicados';
+            button.style.background = '#10b981';
+            button.disabled = true;
+        }
+
+        function rejectAll() {
+            const button = event.target;
+            button.innerHTML = '❌ Todos los cambios descartados';
+            button.style.background = '#ef4444';
+            button.disabled = true;
+        }
+
+        function toggleSetting(toggle) {
+            toggle.classList.toggle('active');
+        }
+
+        function resetDemo() {
+            location.reload();
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft' && currentDemo > 0) {
+                showDemo(currentDemo - 1);
+            } else if (event.key === 'ArrowRight' && currentDemo < 5) {
+                showDemo(currentDemo + 1);
+            }
+        });
+
+        // Inicializar
+        showDemo(0);
+    </script>
+</body>
+</html>
