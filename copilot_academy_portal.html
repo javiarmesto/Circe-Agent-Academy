@@ -980,7 +980,6 @@
 
         function actualLaunch(moduleId) {
             closeModal();
-            
             // Map to actual artifact IDs
             const artifactMap = {
                 'context-management': 'ai_context_management_guide',
@@ -991,12 +990,9 @@
                 'agent-mode': 'agent_mode_explorer',
                 'prompt-engineering': 'prompt_engineering_tool',
                 'tips-tricks': 'copilot_tips_dashboard'
-                // 'llm-testing': 'llm_testing_best_practices'
             };
-            
             const artifactId = artifactMap[moduleId];
-            
-            // Visual feedback
+            // Efecto visual opcional
             const launchEffect = document.createElement('div');
             launchEffect.innerHTML = '🚀';
             launchEffect.style.cssText = `
@@ -1007,9 +1003,8 @@
                 font-size: 4em;
                 pointer-events: none;
                 z-index: 10000;
-                animation: launchRocket 1s ease-out forwards;
+                animation: launchRocket 0.7s ease-out forwards;
             `;
-            
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes launchRocket {
@@ -1019,14 +1014,12 @@
             `;
             document.head.appendChild(style);
             document.body.appendChild(launchEffect);
-            
             setTimeout(() => {
                 document.body.removeChild(launchEffect);
                 document.head.removeChild(style);
-                
-                // Show message about opening the specific artifact
-                alert(`🚀 ¡Lanzando ${moduleInfo[moduleId].title}!\n\nEste módulo se abrirá en el artefacto: ${artifactId}\n\n💡 Tip: Guarda este portal como favorito para volver fácilmente.`);
-            }, 1000);
+                // Redirigir a la página HTML del módulo
+                window.location.href = artifactId + '.html';
+            }, 700);
         }
 
         function quickLaunch(moduleId) {
