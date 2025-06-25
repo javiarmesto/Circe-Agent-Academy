@@ -436,18 +436,7 @@
         @media (max-width: 768px) {
             .modules-grid {
                 grid-template-columns: 1fr;
-            'llm-testing': {
-                title: '🧪 Best Practices: Testing de LLM',
-                description: 'Guía completa para testing efectivo de sistemas basados en Large Language Models',
-                features: [
-                    '🎯 Consideraciones clave del no-determinismo',
-                    '📊 Testing automatizado a escala',
-                    '🛡️ Validación de seguridad y bias',
-                    '🌍 Testing cross-language y cultural'
-                ],
-                note: 'Módulo especializado para desarrolladores que trabajan con LLMs. Esencial para QA de sistemas de IA.'
             }
-            
             .academy-title {
                 font-size: 2.5em;
             }
@@ -515,34 +504,8 @@
             
             <div class="stats-bar">
                 <div class="stat-item">
-                    <div class="stat-number">9</div>
+                    <div class="stat-number">8</div>
                     <div class="stat-label">Módulos Interactivos</div>
-                    <!-- Módulo 9 -->
-                    <div class="module-card" onclick="launchModule('llm-testing', this)">
-                        <div class="module-header">
-                            <div class="module-icon">🧪</div>
-                            <div class="module-info">
-                                <div class="module-title">Testing LLM</div>
-                                <span class="module-level advanced">Avanzado</span>
-                            </div>
-                        </div>
-                        <div class="module-description">
-                            Best practices para testing de sistemas basados en Large Language Models con enfoque en calidad y seguridad.
-                        </div>
-                        <div class="module-features">
-                            <span class="feature-tag">Testing a Escala</span>
-                            <span class="feature-tag">Safety & Bias</span>
-                            <span class="feature-tag">Multilingual</span>
-                        </div>
-                        <div class="module-progress">
-                            <span class="progress-label">Progreso</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 0%"></div>
-                            </div>
-                            <span class="progress-label">0%</span>
-                        </div>
-                        <button class="launch-button">Explorar Módulo</button>
-                    </div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">100+</div>
@@ -789,7 +752,7 @@
                     <button class="quick-btn" onclick="quickLaunch('prompt-engineering')">🚀 Constructor de Prompts</button>
                     <button class="quick-btn" onclick="quickLaunch('chat-modes')">🎯 Comparar Modos</button>
                     <button class="quick-btn" onclick="quickLaunch('tips-tricks')">💡 Tips Dashboard</button>
-                    <button class="quick-btn" onclick="quickLaunch('llm-testing')">🧪 Testing LLM</button>
+                    <!-- <button class="quick-btn" onclick="quickLaunch('llm-testing')">🧪 Testing LLM</button> -->
                 </div>
             </div>
 
@@ -1027,8 +990,8 @@
                 'edit-mode': 'edit_mode_demo',
                 'agent-mode': 'agent_mode_explorer',
                 'prompt-engineering': 'prompt_engineering_tool',
-                'tips-tricks': 'copilot_tips_dashboard',
-                'llm-testing': 'llm_testing_best_practices'
+                'tips-tricks': 'copilot_tips_dashboard'
+                // 'llm-testing': 'llm_testing_best_practices'
             };
             
             const artifactId = artifactMap[moduleId];
