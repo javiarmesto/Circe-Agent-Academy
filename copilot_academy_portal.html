@@ -149,14 +149,144 @@
         }
 
         .module-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 520px; /* Uniformidad en altura de tarjetas */
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             border: 2px solid #e2e8f0;
             border-radius: 20px;
             padding: 30px;
-            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.3s;
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.12), 0 1.5px 6px rgba(0,0,0,0.07);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            animation: fadeInCard 0.8s ease;
+        }
+
+        .module-card .launch-button {
+            margin-top: auto;
+        }
+
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .achievement-item {
+            box-shadow: 0 4px 16px rgba(16,185,129,0.10), 0 1.5px 6px rgba(0,0,0,0.07);
+            animation: fadeInCard 0.8s ease;
+        }
+
+        .main-content, .quick-access, .roadmap-section, .achievement-section {
+            margin-bottom: 60px;
+            border-bottom: 1.5px solid #e2e8f0;
+            padding-bottom: 40px;
+        }
+
+        .main-content {
+            border-radius: 30px 30px 0 0;
+        }
+
+        .footer {
+            margin-top: 0;
+        }
+
+        .launch-button, .quick-btn {
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s;
+        }
+
+        .launch-button:hover, .quick-btn:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.18);
+        }
+
+        .progress-fill {
+            transition: width 1s ease, background 0.5s;
+        }
+
+        .progress-fill[data-progress="100"] {
+            background: linear-gradient(90deg, #10b981, #059669);
+        }
+        .progress-fill[data-progress="85"] {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+        .progress-fill[data-progress="70"] {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+        .progress-fill[data-progress="60"] {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+        .progress-fill[data-progress="45"] {
+            background: linear-gradient(90deg, #ef4444, #f87171);
+        }
+        .progress-fill[data-progress="30"] {
+            background: linear-gradient(90deg, #ef4444, #f87171);
+        }
+        .progress-fill[data-progress="15"] {
+            background: linear-gradient(90deg, #ef4444, #f87171);
+        }
+
+        /* Menú fijo superior */
+        .nav-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.08);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 18px 0 10px 0;
+            font-family: 'Segoe UI Semibold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .nav-fixed a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            padding: 6px 18px;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-fixed a.active, .nav-fixed a:hover {
+            background: #e0e8f0;
+            color: #1e293b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Botón volver arriba */
+        #backToTop {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 2em;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.18);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+        }
+        #backToTop.show {
+            display: flex;
+        }
+
+        /* Tipografía secundaria para títulos */
+        .module-title, .path-title, .roadmap-title, .achievement-title {
+            font-family: 'Segoe UI Semibold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .module-card::before {
@@ -493,7 +623,16 @@
         }
     </style>
 </head>
+
 <body>
+    <!-- Menú fijo de navegación -->
+    <nav class="nav-fixed" id="mainNav" aria-label="Navegación principal">
+        <a href="#ruta" class="nav-link" tabindex="0">Ruta</a>
+        <a href="#acceso-rapido" class="nav-link" tabindex="0">Acceso Rápido</a>
+        <a href="#progreso" class="nav-link" tabindex="0">Progreso</a>
+        <a href="#logros" class="nav-link" tabindex="0">Logros</a>
+    </nav>
+
     <!-- Animated background stars -->
     <div class="stars" id="stars"></div>
 
@@ -520,7 +659,7 @@
         </div>
 
         <div class="main-content">
-            <div class="learning-path">
+            <div class="learning-path" id="ruta">
                 <h2 class="path-title">🛤️ Ruta de Aprendizaje</h2>
                 <p class="path-description">
                     Progresa desde conceptos fundamentales hasta técnicas avanzadas. 
@@ -746,7 +885,7 @@
                 </div>
             </div>
 
-            <div class="quick-access">
+            <div class="quick-access" id="acceso-rapido">
                 <h3>⚡ Acceso Rápido</h3>
                 <p style="margin-bottom: 25px;">Salta directamente a las herramientas más útiles</p>
                 <div class="quick-buttons">
@@ -757,7 +896,7 @@
                 </div>
             </div>
 
-            <div class="roadmap-section">
+            <div class="roadmap-section" id="progreso">
                 <h2 class="roadmap-title">🗺️ Tu Progreso en la Academia</h2>
                 <div class="roadmap-path">
                     <div class="roadmap-step completed" title="Gestión de Contexto">🧠</div>
@@ -778,7 +917,7 @@
                 </div>
             </div>
 
-            <div class="achievement-section">
+            <div class="achievement-section" id="logros">
                 <h3>🏆 Logros Desbloqueados</h3>
                 <div class="achievement-grid">
                     <div class="achievement-item">
@@ -811,6 +950,9 @@
         </div>
     </div>
 
+    <!-- Botón volver arriba -->
+    <button id="backToTop" title="Volver arriba" aria-label="Volver arriba" tabindex="0">↑</button>
+
     <!-- Modal for module info -->
     <div id="moduleModal" class="modal">
         <div class="modal-content">
@@ -820,6 +962,97 @@
     </div>
 
     <script>
+        // --- Botón volver arriba ---
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        backToTopBtn.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        // --- Navegación activa y accesibilidad ---
+        const navLinks = document.querySelectorAll('.nav-fixed .nav-link');
+        const sections = [
+            document.getElementById('ruta'),
+            document.getElementById('acceso-rapido'),
+            document.getElementById('progreso'),
+            document.getElementById('logros')
+        ];
+        function setActiveNav() {
+            let index = sections.length - 1;
+            for (let i = 0; i < sections.length; i++) {
+                if (window.scrollY + 120 < sections[i].offsetTop) {
+                    index = i - 1;
+                    break;
+                }
+            }
+            navLinks.forEach((link, i) => {
+                if (i === index) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.classList.remove('active');
+                    link.removeAttribute('aria-current');
+                }
+            });
+        }
+        window.addEventListener('scroll', setActiveNav);
+        setActiveNav();
+
+        // Soporte de teclado para navegación
+        navLinks.forEach(link => {
+            link.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    link.click();
+                }
+            });
+        });
+
+        // --- Feedback visual tipo toast al lanzar módulo ---
+        function showToast(msg) {
+            let toast = document.createElement('div');
+            toast.innerText = msg;
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 90px;
+                right: 40px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 18px 32px;
+                border-radius: 16px;
+                font-size: 1.1em;
+                box-shadow: 0 8px 32px rgba(102, 126, 234, 0.18);
+                z-index: 4000;
+                opacity: 0;
+                transition: opacity 0.4s;
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = 1; }, 50);
+            setTimeout(() => {
+                toast.style.opacity = 0;
+                setTimeout(() => document.body.removeChild(toast), 400);
+            }, 1800);
+        }
+
+        // Sobrescribir actualLaunch para mostrar toast
+        const originalActualLaunch = window.actualLaunch;
+        window.actualLaunch = function(moduleId) {
+            showToast('Lanzando módulo...');
+            setTimeout(() => {
+                originalActualLaunch(moduleId);
+            }, 700);
+        };
         // Create animated stars background
         function createStars() {
             const starsContainer = document.getElementById('stars');
